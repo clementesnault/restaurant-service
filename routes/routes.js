@@ -80,11 +80,10 @@ registerRouter.post("/registerRestaurant", (req, res) => {
     const r = Restaurants.findOne( { name: req.body.name } ).then((restaurant)=>{
         if(restaurant == null) {
             newRestaurant = {
-                _id: req.body._id,
                 name: req.body.name,
-                zone: req.body.zone,
+                zone: req.body.zone || '',
                 address: req.body.address,
-                notes: req.body.notes,
+                notes: req.body.notes || 0,
                 openingTime: req.body.openingTime,
                 closingTime: req.body.closingTime,
                 type: req.body.type,
