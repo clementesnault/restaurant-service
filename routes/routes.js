@@ -77,7 +77,7 @@ registerRouter.post("/registerUser", (req, res) => {
 
 
 registerRouter.post("/registerRestaurant", (req, res) => {
-    const r = Restaurants.findOne( { name: req.body.name } ).then((restaurant)=>{
+    Restaurants.findOne( { name: req.body.name } ).then((restaurant)=>{
         if(restaurant == null) {
             newRestaurant = {
                 name: req.body.name,
@@ -100,7 +100,12 @@ registerRouter.post("/registerRestaurant", (req, res) => {
 }
 );
 
+registerRouter.put("/updateRestaurant", (req, res) => {
 
+    Restaurants.findOneAndUpdate({_id:req.body.id},{$set:req.body}).then((restaurant)=> {
+        return restaurant
+    })
+})
 
 
 registerRouter.delete("/deleteUser", (req, res) => {
