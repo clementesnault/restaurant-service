@@ -39,8 +39,8 @@ registerRouter.get("/displayAllRestaurant", function (request, res) {
 )
 
 
-registerRouter.get("/displayRestaurant/:name", function (request, res) {
-    Restaurants.findOne( { name: request.params.name} ).then((restaurant)=>{
+registerRouter.get("/displayRestaurant/:id", function (request, res) {
+    Restaurants.findOne( { _id:request.params._id} ).then((restaurant)=>{
         if(restaurant) {
             res.status(200).send(restaurant);
         }
@@ -77,7 +77,7 @@ registerRouter.post("/registerUser", (req, res) => {
 
 
 registerRouter.post("/registerRestaurant", (req, res) => {
-    Restaurants.findOne( { name: req.body.name } ).then((restaurant)=>{
+    Restaurants.findOne( { _id: req.body.id } ).then((restaurant)=>{
         if(restaurant == null) {
             newRestaurant = {
                 name: req.body.name,
@@ -102,8 +102,8 @@ registerRouter.post("/registerRestaurant", (req, res) => {
 
 registerRouter.put("/updateRestaurant", (req, res) => {
 
-    Restaurants.findOneAndUpdate({_id:req.body.id},{$set:req.body}).then((restaurant)=> {
-        return restaurant
+    Restaurants.findOneAndUpdate({_id:req.body._id},req.body).then((restaurant)=> {
+        res.send(restaurant)
     })
 })
 
