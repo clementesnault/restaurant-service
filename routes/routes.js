@@ -65,9 +65,7 @@ registerRouter.post("/registerUser", (req, res) => {
 });
 
 registerRouter.post("/registerRestaurant", (req, res) => {
-  Restaurants.findOne({ _id: req.body.id })
-    .then((restaurant) => {
-      if (restaurant == null) {
+
         newRestaurant = {
           name: req.body.name,
           zone: req.body.zone || "",
@@ -78,15 +76,11 @@ registerRouter.post("/registerRestaurant", (req, res) => {
           type: req.body.type,
           image: req.body.image,
           display: [],
+          components:[],
         };
-        Restaurants.insertMany(newRestaurant);
-      } else {
-        return res.status(409).json({ message: "Restaurant already exist" });
-      }
-    })
-    .catch((err) => {
-      console.log("Error Creation : " + err.message);
-    });
+        Restaurants.insertMany(newRestaurant).then(()=>{
+          return res.status(201).json({ message: "restaurant added" })
+        })
 });
 
 registerRouter.put("/updateRestaurant", (req, res) => {
