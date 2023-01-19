@@ -20,11 +20,11 @@ const Restaurants = mongoose.model(
       required: true,
     },
     openingTime: {
-      type: Date,
+      type: String,
       required: true,
     },
     closingTime: {
-      type: Date,
+      type: String,
       required: true,
     },
     type: {
