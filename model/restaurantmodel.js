@@ -4,13 +4,13 @@ const Restaurants = mongoose.model(
   "Restaurants",
   new mongoose.Schema({
     name: {
-        type: String,
-        required: true,
-      },
+      type: String,
+      required: true,
+    },
     zone: {
       type: [String, String],
       required: true,
-    },  
+    },
     address: {
       type: String,
       required: true,
@@ -20,24 +20,30 @@ const Restaurants = mongoose.model(
       required: true,
     },
     openingTime: {
-      type: Date,
+      type: String,
       required: true,
     },
     closingTime: {
-      type: Date,
-      required: true
+      type: String,
+      required: true,
     },
     type: {
-        type: String,
-        required: true
-      },
+      type: String,
+      required: true,
+    },
     image: {
       type: String,
       required : true
     },
     components:{
       type: Array,
-    }
+      required: true,
+      
+    },
+    display: {
+      type: Array,
+      required: true,
+    },
   })
 );
 
