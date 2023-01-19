@@ -40,7 +40,7 @@ registerRouter.get("/displayAllRestaurant", function (request, res) {
 
 
 registerRouter.get("/displayRestaurant/:id", function (request, res) {
-    Restaurants.findOne( { _id:request.params._id} ).then((restaurant)=>{
+    Restaurants.findOne( { _id:request.params.id} ).then((restaurant)=>{
         if(restaurant) {
             res.status(200).send(restaurant);
         }
