@@ -34,6 +34,9 @@ const Restaurants = mongoose.model(
     image: {
       type: String,
       required : true
+    },
+    components:{
+      type: Array,
     }
   })
 );
