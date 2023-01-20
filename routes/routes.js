@@ -1,8 +1,6 @@
 const express = require("express");
-const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const auth = require("../middleware/auth");
 const registerRouter = express.Router();
 const Users = require("../model/restaurantusermodel");
 const Restaurants = require("../model/restaurantmodel");
